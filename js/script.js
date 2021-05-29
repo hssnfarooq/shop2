@@ -213,26 +213,26 @@ window.onload = function() {
 		}
 	}
 
-	createHeader();
+	generateHeader();
 
 	var page = document.createElement('div');
 	page.className = 'page';
 	document.body.appendChild(page);
 
-	createCategoryList(categories);
+	generateCategoryList(categories);
 
-	createProductList(categories);
+	generateProductList(categories);
 
-	createContactForm();
+	generateContactForm();
 
 	showCategoryList();
 
-	createFooter();
+	generateFooter();
 };
 
 
 
-function createHeader(){
+function generateHeader(){
 	var header = `
 	<div class="limiter">
 		<nav class="navbar navbar-dark navbar-expand-sm bg-dark">
@@ -242,7 +242,7 @@ function createHeader(){
 					<img class="logo" src="img/logo.jpeg" />
 				</a>
 				<h1 class="text-white">Cottogig</h1>
-				<button class="navbar-toggler bg-dark" type="button" data-toggle="collapse" data-target="#Navbar">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
@@ -251,6 +251,9 @@ function createHeader(){
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-items m-2 pl-2 pr-2 rounded">
 							<a class="nav-link" href="#" id="home" onClick = showCategoryList()>Home</a>
+						</li>
+						<li class="nav-items m-2 pl-2 pr-2 rounded">
+							<a class="nav-link" href="#" id="contact" onClick = showContactForm()>Contact</a>
 						</li>
 						<li class="nav-items m-2 pl-2 pr-2 rounded">
 							<a class="nav-link" href="#" id="shirts" onClick = showProductList('shirts')>Shirts</a>
@@ -267,9 +270,6 @@ function createHeader(){
 						<li class="nav-items m-2 pl-2 pr-2 rounded">
 							<a class="nav-link" href="#" id="shoes" onClick = showProductList('shoes')>Shoes</a>
 						</li>
-						<li class="nav-items m-2 pl-2 pr-2 rounded">
-							<a class="nav-link" href="#" id="contact" onClick = showContactForm()>Contact</a>
-						</li>
 					</ul>
 				</div>
 			</div>
@@ -281,7 +281,7 @@ function createHeader(){
 	document.body.appendChild(page);
 }
 
-function createCategoryList(categories) {
+function generateCategoryList(categories) {
 
 
 	var categoryList = '<div class="row text-center text-white categories limiter">';
@@ -301,7 +301,7 @@ function createCategoryList(categories) {
 		categoryList += `
 				<div class="overlay"></div>
 				<div class="position-absolute w-100 pt-5">
-					<button id="` + category + `" class="btn mt-5 pl-5 pr-5 pt-2 pb-2" style="width: 150px; height: 150px" onClick = showProductList(this.id)>` + categories[category]['name'] + `</button>
+					<button id="` + category + `" class="btn mt-5 pl-5 pr-5 pt-2 pb-2" style="width: 150px; height: 150px" onClick = showProductList(this.id)>` + categories[category]['name'] + `<p style="font-size: 15px; margin-top: 10px">Click to Buy</p></button>
 				</div>
 			</div>
 		`;
@@ -313,7 +313,7 @@ function createCategoryList(categories) {
 	$(".page").append(categoryList);
 }
 
-function createProductList(categories){
+function generateProductList(categories){
 
 	var productList = '';
 	var category_name = '';
@@ -347,44 +347,24 @@ function createProductList(categories){
 	}
 }
 
-function createContactForm(){
+function generateContactForm(){
 
 	var contactForm = `
 	<div class="limiter">
-		<div class="contact_form pb-md-4">
-			<h1 class="pl-3 pl-md-5 pt-3 pb-3 font-weight-bold" style="text-align: center;">Contact</h1>
-			<form class="col-md-6 offset-md-3" action="#" method="#">
-				<div class="form-group">
-					<label for="firstname" class="col-md-3 col-form-label">Enter First Name</label>
-					<div class="col-md-9">
-						<input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name Here">
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="lastname" class="col-md-3 col-form-label">Enter Last Name</label>
-					<div class="col-md-9">
-						<input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name Here">
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="email" class="col-md-3 col-form-label">Enter Email</label>
-					<div class="col-md-9">
-						<input type="email" class="form-control" id="email" name="email" placeholder="Email Here">
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="message" class="col-md-3 col-form-label">Place Message</label>
-					<div class="col-md-9">
-						<textarea type="text" class="form-control" id="message" name="message" placeholder="Write Message Here" />
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="offset-md-3 col-md-9">
-						<button type="submit" class="btn btn-primary pl-4 pr-4 pt-2 pb-2 submit">Submit</button>
-					</div>
-				</div>
-			</form>
-		</div>
+	<div class="contact_form pb-md-4">
+	<h1 class="pt-3 pb-3 font-weight-bold" style="text-align:center">Contact</h1>
+	<div class='contact' style="display:flex; justify-content:flex-start; align-items:center; flex-direction:column">
+	<p class="text-sm-left"><span style="font-weight: 600">Firmensitz: </span></p>
+	<p class="text-sm-left"><span style="font-weight: 600"></span> Brandenburgische Strasse 18</p>
+	<p class="text-sm-left"><span style="font-weight: 600"></span> CottoGig Gmbh</p>
+	<p class="text-sm-left"><span style="font-weight: 600"></span>Rheinstraße 56</p>
+	<p class="text-sm-left"><span style="font-weight: 600"></span>73734 Berlin</p>
+	<p class="text-sm-left"><span style="font-weight: 600">Kontakt: </span></p>
+	<p class="text-sm-left"><span style="font-weight: 600">Telefon des Kundenservice: </span>+49 (0) 89/325 89 91 0</p>
+	<p class="text-sm-left"><span style="font-weight: 600">Fax: </span>+49 (0) 89/325 89 91 111</p>
+	<p class="text-sm-left"><span style="font-weight: 600">E-Mail: </span>kontakt@CottoGig.de</p>
+	<p class="text-sm-left"><span style="font-weight: 600">Web: </span>www.cotto-gig.de</p>
+	</div>
 		</div>
 	`;
 
@@ -431,7 +411,7 @@ function showContactForm(){
 	$('.contact_form').show();
 }
 
-function createFooter(){
+function generateFooter(){
 	var footer = document.createElement('footer');
 	footer.className = 'text-center border p-2 limiter footer-area';
 	footer.innerHTML = '<h6 class="m-0">© 2021 Cottogig</h6>';

@@ -109,6 +109,13 @@ nav{
 	transform: translateY(-10px);
 }
 
+.navbar-toggler{
+	background-color: #ffe593;
+}
+.navbar-toggler-icon{
+	color: black;
+}
+
 .submit, .submit:hover{
 	background-color: purple;
 	border-radius: 25px;
